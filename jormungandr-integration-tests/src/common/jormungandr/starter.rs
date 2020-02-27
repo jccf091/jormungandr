@@ -122,7 +122,6 @@ pub struct Starter {
     sleep: u64,
     role: Role,
     verification_mode: StartupVerificationMode,
-    explorer_enabled: bool,
     on_fail: OnFail,
     config: Option<JormungandrConfig>,
     benchmark: Option<SpeedBenchmarkDef>,
@@ -135,7 +134,6 @@ impl Starter {
             sleep: 2,
             role: Role::Leader,
             verification_mode: StartupVerificationMode::Rest,
-            explorer_enabled: false,
             on_fail: OnFail::RetryUnlimitedOnPortOccupied,
             config: None,
             benchmark: None,
@@ -159,11 +157,6 @@ impl Starter {
 
     pub fn role(&mut self, role: Role) -> &mut Self {
         self.role = role;
-        self
-    }
-
-    pub fn with_explorer(&mut self) -> &mut Self {
-        self.explorer_enabled = true;
         self
     }
 
